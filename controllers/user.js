@@ -34,7 +34,7 @@ exports.signup = async function (req, res) {
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
         const createdata = await UM.create({ ...req.body, password: hashedPassword });
-        const token = jwt.sign({ id: createdata._id }, 'YP');
+        const token = jwt.sign({ id: createdata._id }, process.env.Secure_key);
 
         res.status(201).json({
             status: "success",
@@ -73,14 +73,10 @@ exports.login = async function (req, res) {
             });
         }
 
-
-        // const token = jwt.sign({ id: logindata._id }, 'YP');
-
         res.status(200).json({
             status: "success",
             message: "Logged in successfully",
             logindata,
-            // token
         });
 
     } catch (error) {
