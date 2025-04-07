@@ -6,9 +6,9 @@ const productSchema = new mongoose.Schema({
         ref: 'User',
         required: true
     },
-    productname:{
+    productname: {
         type: String,
-        require:true
+        require: true
     },
     price: {
         type: Number,
@@ -21,7 +21,7 @@ const productSchema = new mongoose.Schema({
     },
     description: {
         type: String,
-        require:true
+        require: true
     },
     image: {
         type: [String],
