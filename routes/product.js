@@ -23,6 +23,7 @@ const upload = multer({ storage });
 router.post('/', upload.array('image', 10), PC.createData);
 router.get('/find/:id', PC.oneproduct);
 router.get('/', PC.allProducts);
+router.get('/catid/:id', PC.allcategory);
 router.get('/search', PC.searchProducts);
 router.patch('/:id', PC.updateProduct);
 router.delete('/:id', PC.deleteProduct);

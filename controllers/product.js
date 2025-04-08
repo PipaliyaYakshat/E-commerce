@@ -173,5 +173,25 @@ exports.searchProducts = async (req, res) => {
     }
 };
 
+exports.allcategory = async (req, res) => {
+    try {
+        var catid = req.params.id
 
+        const viewalldata = await PM.find({category:catid}).populate([
+            { path: 'name' },
+            { path: 'category' }
+        ]);
+
+        res.status(201).json({
+            status: "success",
+            message: "Data read successfully",
+            data: viewalldata
+        });
+    } catch (error) {
+        res.status(404).json({
+            status: "fail",
+            message: error.message,
+        });
+    }
+};
 
